@@ -1,0 +1,38 @@
+class Solution {
+  public:
+    void mergeArrays(vector<int>& a, vector<int>& b) {
+        // code here
+        
+        int k = a.size();
+        int m = b.size();
+        
+   
+        
+        for (int i : b){
+            a.push_back(i);
+        }
+        
+        int n = a.size();
+        sort(a.begin(),a.end());
+        
+        b.clear();
+        
+        b.resize(m);
+        
+        int idx = 0;
+        for (int l = k ;l<n;l++){
+            b[idx++] = a[l];
+           
+            
+        }
+        
+        for (int i = k;i<n;i++){
+            a.pop_back();
+        }
+        
+        
+        
+        
+       
+    }
+};
