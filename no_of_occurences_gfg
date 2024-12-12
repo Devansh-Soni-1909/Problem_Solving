@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    int countFreq(vector<int>& arr, int target) {
+        // code here
+        int n = arr.size();
+        
+        auto it1 = lower_bound(arr.begin(),arr.end(),target);
+        auto it2 = upper_bound(arr.begin(),arr.end(),target);
+        
+        int idx1 = it1-arr.begin();
+        int idx2 = arr.end() - it2 ;
+        return n - idx1 - idx2 ;
+        
+    }
+};
