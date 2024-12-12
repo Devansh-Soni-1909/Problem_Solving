@@ -1,0 +1,34 @@
+class Solution {
+public:
+    long long pickGifts(vector<int>& gifts, int k) {
+
+        long long int  sum = 0;
+       
+        int n = gifts.size();
+        int idx , maxi;
+        while(k){
+           int idx = 0 ;
+           int maxi = gifts[0];
+           for (int m = 1 ; m < n;m++){
+            if (gifts[m]>maxi){
+            maxi = gifts[m];
+            idx = m;
+            }
+           } 
+
+           cout<<maxi<<" ";
+           gifts[idx] = (int)sqrt(maxi);
+           
+
+          
+           k--;
+
+        }
+        for (int  i :gifts){
+            sum+=i;
+        }
+        return sum;
+        
+        
+    } 
+};
