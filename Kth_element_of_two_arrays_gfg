@@ -1,0 +1,39 @@
+class Solution {
+  public:
+    int kthElement(vector<int>& a, vector<int>& b, int k) {
+        // code here
+        
+        int n = a.size();
+        int m = b.size();
+        
+        vector<int> ans;
+        int i = 0 ;
+        int j = 0;
+        while(i<a.size() && j<b.size()){
+            if (a[i]<b[j]){
+                ans.push_back(a[i]);
+                i++;
+            }
+            else if (a[i]==b[j]){
+                ans.push_back(b[j]);
+                ans.push_back(b[j]);
+                i++;
+                j++;
+            }
+            else{
+                
+                ans.push_back(b[j]);
+                j++;
+            }
+        }
+        while(i<n){
+            ans.push_back(a[i]);
+            i++;
+        }
+        while(j<m){
+            ans.push_back(b[j]);
+            j++;
+        }
+        return ans[k-1];
+    }
+};
