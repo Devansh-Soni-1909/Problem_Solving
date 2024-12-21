@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int countBalls(int lowLimit, int highLimit) {
+
+        int ans = 1;
+        for (int i = lowLimit ; i <= highLimit ;i++){
+           int sum = 0;
+           int num = i;
+            while(num){
+                sum+=(num%10);
+                num/=10;
+
+            }
+            ans = max(ans , sum);
+        }
+        vector<int> boxes(ans+1);
+        for (int i = lowLimit ; i <= highLimit ;i++){
+           int s = 0;
+           int n = i;
+            while(n){
+                s+=(n%10);
+                n/=10;
+
+            }
+            boxes[s]++;
+        }
+
+        int a = *max_element(boxes.begin(),boxes.end());
+        return a;
+
+        
+        
+    }
+};
