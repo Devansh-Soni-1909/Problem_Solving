@@ -1,0 +1,36 @@
+class Solution {
+  public:
+    // Function to search a given number in row-column sorted matrix.
+    bool searchMatrix(vector<vector<int>> &mat, int x) {
+        // code here
+        
+        int m = mat.size();
+        int n = mat[0].size();
+        
+        int s = 0;
+        int e = m-1;
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            if (mat[mid][0]<=x && mat[mid][n-1]>=x){
+                 int start = 0;
+                 int end = n-1;
+                 while(start<=end){
+                    int m = start+(end-start)/2;
+                    if (mat[mid][m] == x) return true;
+                    else if (mat[mid][m] < x) start = m+1;
+                    else end = m-1;
+                }
+                return false;
+                
+            }
+            else if (mat[mid][0]>x ){
+                e = mid-1;
+                
+            }
+            else s = mid+1;
+           
+        }
+        return false;
+        
+    }
+};
