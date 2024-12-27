@@ -1,0 +1,22 @@
+class Solution {
+ 
+  public:
+    int countPairs(vector<int> &arr, int target) {
+        // Code here
+        
+        int cnt = 0;
+        map<int,int> mp;
+        mp[0]=0;
+        for(int i : arr){
+            if (mp.find(target -i)!=mp.end()) cnt+=mp[target-i];
+            mp[i]++;
+        }
+        return cnt;
+    }
+
+    
+    
+
+    
+    
+};
