@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    vector<int> intersectionWithDuplicates(vector<int>& a, vector<int>& b) {
+        // code here
+        
+       
+        
+        set<int>st;
+        
+        map<int,int> mp;
+        for (int i : a){
+            mp[i]++;
+        }
+        
+        for (int j : b){
+            
+            if (mp[j]) st.insert(j);
+            
+        }
+        
+         vector<int> ans(st.begin(),st.end());
+        return ans;
+    }
+};
