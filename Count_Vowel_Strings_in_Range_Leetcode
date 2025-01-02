@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int isVowelString(string &a) {
+        char c1 = a[0];
+        char c2 = a[a.size() - 1];
+        string w = "aeiou";
+        if (w.find(c1) == string::npos || w.find(c2) == string::npos) 
+            return false;
+        return true;
+    }
+    vector<int> vowelStrings(vector<string>& words, vector<vector<int>>& queries) {
+
+     int n = words.size();
+     vector<int> presum(n+1,0);
+
+     for (int i = 0 ; i < n;i++){
+        presum[i+1]=presum[i]+(isVowelString(words[i])?1:0);
+     }
+
+     vector<int> ans;
+     for (auto &i : queries){
+        int s = i[0];
+        int e = i[1];
+        ans.push_back(presum[e+1]-presum[s]);
+     }
+     return ans;
+
+        
+    }
+};
