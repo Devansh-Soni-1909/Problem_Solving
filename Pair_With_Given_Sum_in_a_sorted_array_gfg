@@ -1,0 +1,50 @@
+class Solution {
+  public:
+   int countPairs(vector<int> &arr, int target) {
+    int n = arr.size();
+    int l = 0;
+    int r = n - 1;
+    int ans = 0;
+    
+    while (l < r) {
+        int sum = arr[l] + arr[r];
+        
+        if (sum == target) {
+        
+            int leftcount = 1;
+            while (l + 1 < r && arr[l + 1] == arr[l]) {
+                leftcount++;
+                l++;
+            }
+            
+          
+            int rightcount = 1;
+            while (r - 1 > l && arr[r - 1] == arr[r]) {
+                rightcount++;
+                r--;
+            }
+            
+         
+            if (arr[l] == arr[r]) {
+                int total = leftcount + rightcount; 
+                ans += (total * (total - 1)) / 2;  
+                break;  
+            } else {
+                ans += leftcount * rightcount;
+            }
+            
+            l++;
+            r--;
+            
+        } else if (sum < target) {
+            l++;
+        } else {
+            r--;
+        }
+    }
+    
+    return ans;
+}
+
+
+};
