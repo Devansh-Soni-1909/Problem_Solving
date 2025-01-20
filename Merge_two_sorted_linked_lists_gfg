@@ -1,0 +1,48 @@
+class Solution {
+  public:
+    Node* sortedMerge(Node* head1, Node* head2) {
+        
+        Node* dNode = new Node(-1);
+        Node* curr = dNode;
+        Node* temp1 = head1;
+        Node* temp2 = head2;
+        while(temp1 && temp2){
+            if (temp1->data < temp2->data){
+                curr->next = temp1;
+                curr = temp1;
+                temp1 = temp1->next;
+                
+                
+            }
+            else if (temp1->data > temp2->data){
+                curr -> next = temp2;
+                curr = temp2;
+                temp2 = temp2->next;
+            }
+            else{
+                curr -> next = temp1;
+                curr = temp1;
+                temp1 = temp1->next;
+                curr->next = temp2;
+                curr = temp2;
+                temp2 = temp2->next;
+                
+            }
+            
+        }
+        
+        while(temp1){
+            curr->next = temp1;
+            curr = temp1;
+             temp1 = temp1->next;
+        }
+        while(temp2){
+            curr->next = temp2;
+            curr = temp2;
+             temp2 = temp2->next;
+        }
+        
+        return dNode->next;
+        
+    }
+};
