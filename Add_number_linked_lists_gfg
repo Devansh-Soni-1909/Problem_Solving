@@ -1,0 +1,53 @@
+class Solution {
+  public:
+    Node* reverseLL(Node* head){
+        Node* temp = head;
+        Node* prev =  NULL;
+        while(temp){
+            Node* nextnode = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = nextnode;
+            
+        }
+        return prev;
+    }
+    Node* addTwoLists(Node* num1, Node* num2) {
+        // code here
+        Node* newnum1 = reverseLL(num1);
+        Node* newnum2 = reverseLL(num2);
+        
+        Node* temp1 = newnum1;
+        Node* temp2 = newnum2;
+        int carry = 0;
+        Node* dummyNode = new Node(-1);
+        Node* mover = dummyNode;
+        while(temp1 || temp2 || carry) {
+            int sum = carry;
+            if (temp1){
+               sum+=temp1->data;
+               temp1 = temp1->next;
+            }
+            if (temp2){
+               sum+=temp2->data;
+               temp2 = temp2->next;
+            }
+            
+            Node* node = new Node(sum%10);
+            carry = sum/10;
+            mover->next = node;
+            mover = node;
+        }
+      
+        // Node* newtail = dummyNode->next;
+        // dummyNode->next = NULL;
+        Node* newhead =  reverseLL(dummyNode->next);
+        
+        // Node* t = newhead;
+        while(newhead->data == 0){
+            newhead = newhead->next;
+        }
+        return newhead;
+        
+    }
+};
