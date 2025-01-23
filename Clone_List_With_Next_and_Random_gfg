@@ -1,0 +1,44 @@
+class Solution {
+  public:
+    void insertinBetween(Node* head){
+        Node* temp = head;
+        while(temp){
+            Node* nextnode = temp->next;
+            Node* copynode = new Node(temp->data);
+            temp->next = copynode;
+            copynode->next = nextnode;
+            temp = nextnode;
+        }
+    }
+    
+    void connectRandomPointer(Node* head){
+        Node* t = head;
+        while(t){
+            Node* cnode = t->next;
+            if (t->random){
+                cnode->random = t->random->next;
+                
+            }
+            t = t->next->next;
+        }
+    }
+    Node *cloneLinkedList(Node *head) {
+        // Write your code here
+        
+        insertinBetween(head);
+        connectRandomPointer(head);
+        Node* dNode = new Node(-1);
+        Node* result = dNode;
+        
+        Node* tempo = head;
+        while(tempo){
+            result->next = tempo->next;
+            tempo->next = tempo->next->next;
+            result = result->next;
+            tempo = tempo->next;
+        }
+        return dNode->next;
+        
+        
+    }
+};
