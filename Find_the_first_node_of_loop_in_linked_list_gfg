@@ -1,0 +1,14 @@
+class Solution {
+  public:
+    Node* findFirstNode(Node* head) {
+        
+        unordered_map<Node*,bool>mp;
+        Node* temp = head;
+        while(temp){
+            if (mp[temp]) return temp;
+            mp[temp]=true;
+            temp = temp->next;
+        }
+        return NULL;
+    }
+};
