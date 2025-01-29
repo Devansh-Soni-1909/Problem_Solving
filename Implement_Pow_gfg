@@ -1,0 +1,33 @@
+class Solution {
+  public:
+  
+    double calPow(double b , int e){
+        bool isexpNeg = false;
+        double ans = 1.0;
+        if (e<0){
+            isexpNeg = true;
+            e = -e;
+        }
+        
+        while(e>0){
+            if(e%2!=0){
+                ans*=b;
+                
+            }
+            
+            b*=b;
+            e/=2;
+        }
+        
+        if (isexpNeg) return 1/ans;
+        else return ans;
+    }
+    double power(double b, int e) {
+        // code here
+        
+        double a = calPow(b,e);
+        return a;
+        
+        
+    }
+};
