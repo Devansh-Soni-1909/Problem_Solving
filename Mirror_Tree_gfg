@@ -1,0 +1,11 @@
+void mirrorFind(Node* node){
+        if(!node) return ;
+        mirrorFind(node->left);
+        mirrorFind(node->right);
+        swap(node->left,node->right);
+    }
+    void mirror(Node* node) {
+        // code here
+        
+        mirrorFind(node);
+    }
