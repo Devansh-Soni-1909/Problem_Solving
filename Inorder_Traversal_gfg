@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    // Function to return a list containing the inorder traversal of the tree.
+    vector<int> inOrder(Node* root) {
+        // Your code here
+         if(!root) return {};
+        vector<int> ans;
+        
+       vector<int> left = inOrder(root->left);
+       
+       ans.insert(ans.end(),left.begin(),left.end());
+        ans.push_back(root->data);
+         vector<int> right = inOrder(root->right);
+         ans.insert(ans.end(),right.begin(),right.end());
+        
+        return ans;
+    }
+};
